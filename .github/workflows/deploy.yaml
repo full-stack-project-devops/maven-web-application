@@ -26,7 +26,7 @@ jobs:
     steps:
       - uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ vars.AWS_ROLE_TO_ASSUME }}
+          role-to-assume: "arn:aws:iam::605693051514:role/GITHUB_ACTIONS_ROLE"
           aws-region: "us-west-2"
       - uses: actions/checkout@v4
       - name: Set up JDK 8
