@@ -27,7 +27,7 @@ jobs:
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ vars.AWS_ROLE_TO_ASSUME }}
-          aws-region: ${{ vars.REGION }}
+          aws-region: "us-west-2"
       - uses: actions/checkout@v4
       - name: Set up JDK 8
         uses: actions/setup-java@v2
