@@ -46,7 +46,7 @@ jobs:
           REPOSITORY: maven-application
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t $REGISTRY/$REPOSITORY:$GITHUB_RUN_ID .
+          docker build -t $REGISTRY/$REPOSITORY:$GITHUB_RUN_NUMBER .
           docker build -t $REGISTRY/$REPOSITORY:stage .
-          docker push $REGISTRY/$REPOSITORY:$GITHUB_RUN_ID
+          docker push $REGISTRY/$REPOSITORY:$GITHUB_RUN_NUMBER
           docker push $REGISTRY/$REPOSITORY:stage
