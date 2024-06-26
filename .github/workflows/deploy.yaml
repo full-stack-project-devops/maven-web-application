@@ -4,21 +4,14 @@ on:
     inputs:
       environment:
         type: choice
-        default: dev
         required: true
         options:
           - dev
           - qa
           - prod
-      branch:
-        type: string
-        required: true
   workflow_call:
     inputs:
       environment:
-        type: string
-        required: true
-      branch:
         type: string
         required: true
 permissions:
@@ -28,11 +21,16 @@ jobs:
   building-packing:
     name: Building and packaging maven application
     runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.environment }}
+    # env:
+    #   REPOSITORY_NAME: ${{ inputs.repository }}
+    #   BRANCH_NAME: ${{ inputs.branch }}
     steps:
       - uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: "arn:aws:iam::605693051514:role/GITHUB_ACTIONS_ROLE"
-          aws-region: "us-west-2"
+          role-to-assume: ${{ vars.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ vars.AWS_REGION }}
       - uses: actions/checkout@v4
       - name: Set up JDK 8
         uses: actions/setup-java@v2
