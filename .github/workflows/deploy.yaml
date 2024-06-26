@@ -30,9 +30,9 @@ jobs:
     steps:
       - uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          role-to-assume: ${{ vars.AWS_ROLE_TO_RESUME }}
           role-session-name: "default"
-          aws-region: ${{ vars.aws-region }}
+          aws-region: ${{ vars.AWS_REGION }}
       - uses: actions/checkout@v4
       - name: Set up JDK 8
         uses: actions/setup-java@v2
